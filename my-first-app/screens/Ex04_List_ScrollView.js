@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { useState } from "react";
 
 export default function Ex04_List_ScrollView(){
@@ -17,16 +17,18 @@ export default function Ex04_List_ScrollView(){
 
     return (
         <View style={styles.container}>
+            <ScrollView>
             {studentList.map (
                 student => 
                 (
                     <Text 
                     key={student.key}
                     style={styles.details}>
-                        {student.name}
+                       {student.name}
                     </Text>
                 )
             )}
+            </ScrollView>
         </View>
     )
 }
