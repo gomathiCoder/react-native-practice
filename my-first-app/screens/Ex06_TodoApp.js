@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import React, { useState } from "react";
 import TodoHeader from "../components/TodoHeader";
+import TodoItems from "../components/TodoItems";
 
 export default function Ex06_TodoApp(){
     const [todo, setTodo] = useState([
@@ -8,6 +9,12 @@ export default function Ex06_TodoApp(){
         {key : 2, text : 'Go shopping'},
         {key : 3, text : 'Play CandyCrush'}
     ]);
+
+    const presshandler = (key) => {
+        setTodo( (prevTodo)=> {
+            return prevTodo.filter(item => item.key != key )
+        })
+    }
 
     return (
         <View style={styles.container} >
@@ -18,9 +25,7 @@ export default function Ex06_TodoApp(){
                         <FlatList 
                             data={todo}
                             renderItem={({ item }) =>
-                                (
-                                <Text>{item.text}</Text>
-                                )
+                                <TodoItems item={item} presshandler={presshandler}/>
                             }
                         />
                     </View>
