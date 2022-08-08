@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import { Text, View, StyleSheet, FlatList, Alert } from "react-native";
 import React, { useState } from "react";
 import TodoHeader from "../components/TodoHeader";
 import TodoItems from "../components/TodoItems";
@@ -20,12 +20,20 @@ export default function Ex06_TodoApp(){
 
     const submitHandler = (task) =>
     {
-        setTodo((prevTodo)=> {
-            setKey(key => key + 1)
-            return [{text: task, key:key},
-            ...prevTodo]
+        if(task.length > 3){
+            setTodo((prevTodo)=> {
+                setKey(key => key + 1)
+                return [{text: task, key:key},
+                ...prevTodo]
+            }
+            )
+        } else {
+            Alert.alert('Oops', 'Todo must have atleast 4 characters.',
+            [
+                {text:"Ok", onPress:() => console.log("Ok pressed")},
+                {text:"Cancel", onPress:()=> console.log("Cancel pressed")}
+            ])
         }
-        )
     }
 
     return (
