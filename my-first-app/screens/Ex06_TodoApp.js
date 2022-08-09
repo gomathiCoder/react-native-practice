@@ -62,12 +62,15 @@ const styles = StyleSheet.create({
     container :{
         flex : 1,
         backgroundColor : '#fff',
-        width : 450,
+        width : 400,
     },
     content:{
+        flex: 1,
         padding : 40
     },
     list:{
-        marginTop : 20
+        flex: 1,
+        marginTop : 20,
+        alignItems: 'center'
     }
 })
